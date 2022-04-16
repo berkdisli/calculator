@@ -6,7 +6,7 @@ import Screen from './components/Screen';
 
 const App = () => {
 
-  let [calc, setCalc] = useState({
+  let [calc] = useState({
     sign: "",
     num: 0,
     res: 0,
