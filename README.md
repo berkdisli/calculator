@@ -1,6 +1,6 @@
 # Calculator
 
-A mobile friendly metronome web app built using the React. 
+A calculator app to perform calculations, web app built using the React. 
 
 ## Available Scripts
 
