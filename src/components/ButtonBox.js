@@ -13,7 +13,6 @@ const btnValues = [
 const ButtonBox = () => {
     return (
         <div className="buttonBox">
-
             {
                 btnValues.flat().map((btn, i) => {
                     return (
