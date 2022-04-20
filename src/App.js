@@ -20,6 +20,7 @@ const App = () => {
     res: 0,
   });
 
+  // The numClickHandler function gets triggered only if any of the number buttons (0–9) are pressed.
   const numClickHandler = (e) => {
     e.preventDefault();
     const value = e.target.innerHTML;
@@ -38,6 +39,29 @@ const App = () => {
     }
   }
 
+  // It adds the decimal point to the current num value, making it a decimal number.
+  const commaClickHandler = (e) => {
+    e.preventDefault();
+    const value = e.target.innerHTML;
+
+    setCalc({
+      ...calc,
+      num: !calc.num.toString().includes(".") ? calc.num + value : calc.num,
+    });
+  }
+
+  const signClickHandler = (e) => {
+    e.preventDefault();
+    const value = e.target.innerHTML;
+
+    setCalc({
+      ...calc,
+      sign: value,
+      res: !calc.res && calc.num ? calc.num : calc.res,
+      num: 0,
+    })
+  }
+
   return (
     <Wrapper>
       <Screen value={calc.num ? calc.num : calc.res} />
@@ -50,18 +74,18 @@ const App = () => {
               value={btn}
               onClick={
                 btn === "C"
-                  ? resetClickHandler
-                  : btn === "+-"
-                    ? invertClickHandler
-                    : btn === "%"
-                      ? percentClickHandler
-                      : btn === "="
-                        ? equalsClickHandler
-                        : btn === "/" || btn === "X" || btn === "-" || btn === "+"
-                          ? signClickHandler
-                          : btn === "."
-                            ? commaClickHandler
-                            : numClickHandler
+                  // ? resetClickHandler
+                  // : btn === "+-"
+                  //   ? invertClickHandler
+                  //   : btn === "%"
+                  //     ? percentClickHandler
+                  //     : btn === "="
+                  //       ? equalsClickHandler
+                  //       : btn === "/" || btn === "X" || btn === "-" || btn === "+"
+                  ? signClickHandler
+                  : btn === "."
+                    ? commaClickHandler
+                    : numClickHandler
               }
             />
           );
