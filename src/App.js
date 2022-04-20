@@ -50,6 +50,7 @@ const App = () => {
     });
   }
 
+  // The signClickHandler function gets fired when the user press either +, –, * or /. 
   const signClickHandler = (e) => {
     e.preventDefault();
     const value = e.target.innerHTML;
@@ -59,6 +60,28 @@ const App = () => {
       sign: value,
       res: !calc.res && calc.num ? calc.num : calc.res,
       num: 0,
+    })
+  }
+
+  // The function first checks, if there’s any entered value (num) or calculated value (res), and then inverts them by multiplying with -1:
+  const invertClickHandler = () => {
+    setCalc({
+      ...calc,
+      num: calc.num ? calc.num * -1 : 0,
+      res: calc.res ? calc.res * -1 : 0,
+      sign: "",
+    })
+  }
+
+  // calculates the percentage using the built-in Math.pow function, which returns the base to the exponent power
+  const percentClickHandler = () => {
+    const num = calc.num ? parseFloat(calc.num) : 0;
+    const res = calc.res ? parseFloat(calc.res) : 0;
+
+    setCalc({
+      ...calc,
+      num: (num /= Math.pow(100, 1)),
+      res: (res /= Math.pow(100, 1)),
     })
   }
 
@@ -74,18 +97,18 @@ const App = () => {
               value={btn}
               onClick={
                 btn === "C"
-                  // ? resetClickHandler
-                  // : btn === "+-"
-                  //   ? invertClickHandler
-                  //   : btn === "%"
-                  //     ? percentClickHandler
-                  //     : btn === "="
-                  //       ? equalsClickHandler
-                  //       : btn === "/" || btn === "X" || btn === "-" || btn === "+"
-                  ? signClickHandler
-                  : btn === "."
-                    ? commaClickHandler
-                    : numClickHandler
+                  ? resetClickHandler
+                  : btn === "+-"
+                    ? invertClickHandler
+                    : btn === "%"
+                      ? percentClickHandler
+                      : btn === "="
+                        ? equalsClickHandler
+                        : btn === "/" || btn === "X" || btn === "-" || btn === "+"
+                          ? signClickHandler
+                          : btn === "."
+                            ? commaClickHandler
+                            : numClickHandler
               }
             />
           );
