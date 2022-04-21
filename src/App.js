@@ -99,8 +99,8 @@ const App = () => {
 
   // calculates the percentage using the built-in Math.pow function, which returns the base to the exponent power
   const percentClickHandler = () => {
-    const num = calc.num ? parseFloat(calc.num) : 0;
-    const res = calc.res ? parseFloat(calc.res) : 0;
+    let num = calc.num ? parseFloat(calc.num) : 0;
+    let res = calc.res ? parseFloat(calc.res) : 0;
 
     setCalc({
       ...calc,
@@ -149,7 +149,7 @@ const App = () => {
         })}
       </ButtonBox>
     </Wrapper>
-
   );
 };
+
 export default App;
