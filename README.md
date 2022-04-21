@@ -16,6 +16,6 @@ A calculator app to perform calculations, web app built using the React.
 
 To deploy the app to Github Pages:
 
-### `npm run deploy:gh-pages`
+#### `npm run deploy:gh-pages`
 
 
