@@ -4,13 +4,13 @@ A calculator app to perform calculations, web app built using the React.
 
 ## Installation
 
-### `npm` or with ### `yarn`
+#### `npm` or with `yarn`
 
-### `git clone https://github.com/berkdisli/calculator.git`
+#### `git clone https://github.com/berkdisli/calculator.git`
 
-### `npm install`  
+#### `npm install`  
 
-### `npm start`   
+#### `npm start`   
 
 ## Deploy
 
