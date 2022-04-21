@@ -18,4 +18,8 @@ To deploy the app to Github Pages:
 
 #### `npm run deploy:gh-pages`
 
+## Web-page
+
+https://berkdisli.github.io/calculator/
+
 
