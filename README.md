@@ -2,25 +2,15 @@
 
 A calculator app to perform calculations, web app built using the React. 
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+### `npm` or with ### `yarn`
 
-### `npm start`  
+### `git clone https://github.com/berkdisli/calculator.git`
 
-or with
+### `npm install`  
 
-### `yarn`
-
-## Build
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm start`   
 
 ## Deploy
 

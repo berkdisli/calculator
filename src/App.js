@@ -1,5 +1,5 @@
-import Wrapper from './components/Wrapper';
 import React, { useState } from "react";
+import Wrapper from './components/Wrapper';
 import ButtonBox from './components/ButtonBox';
 import Screen from './components/Screen';
 import Button from './components/Button';
@@ -12,8 +12,10 @@ const btnValues = [
   [0, ".", "="],
 ];
 
-const toLocaleString = (num) =>
+const toLocale = (num) =>
   String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1 ");
+
+const deleteSpaces = (num) => num.toString().replace(/\s/g, "");
 
 const App = () => {
 
@@ -28,17 +30,17 @@ const App = () => {
     e.preventDefault();
     const value = e.target.innerHTML;
 
-    if (calc.num.length < 16) {
+    if (deleteSpaces(calc.num).length < 16) {
       setCalc({
         ...calc,
         num:
           calc.num === 0 && value === "0"
             ? "0"
-            : calc.num % 1 === 0
-              ? toLocaleString(Number(calc.num + value))
-              : toLocaleString(calc.num + value),
+            : deleteSpaces(calc.num) % 1 === 0
+              ? toLocale(Number(deleteSpaces(calc.num + value)))
+              : toLocale(calc.num + value),
         res: !calc.sign ? 0 : calc.res,
-      });
+      })
     }
   }
 
@@ -49,7 +51,7 @@ const App = () => {
 
     setCalc({
       ...calc,
-      num: !calc.num.toString().includes(".") ? calc.num + value : calc.num,
+      num: !calc.num.toString().includes(".") ? calc.num + value : calc.num
     })
   }
 
@@ -81,7 +83,9 @@ const App = () => {
         ...calc,
         res: calc.num === "0" && calc.sign === "/"
           ? "Cannot divide with 0"
-          : toLocaleString(math(Number(calc.res), Number(calc.num), calc.sign)),
+          : toLocale(
+            math(Number(deleteSpaces(calc.res)),
+              Number(deleteSpaces(calc.num)), calc.sign)),
         sign: "",
         num: 0,
       })
@@ -91,8 +95,8 @@ const App = () => {
   const invertClickHandler = () => {
     setCalc({
       ...calc,
-      num: calc.num ? toLocaleString(calc.num * -1) : 0,
-      res: calc.res ? toLocaleString(calc.res * -1) : 0,
+      num: calc.num ? toLocale(deleteSpaces(calc.num * -1)) : 0,
+      res: calc.res ? toLocale(deleteSpaces(calc.res * -1)) : 0,
       sign: "",
     })
   }
