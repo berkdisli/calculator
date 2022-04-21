@@ -12,6 +12,9 @@ const btnValues = [
   [0, ".", "="],
 ];
 
+const toLocaleString = (num) =>
+  String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1 ");
+
 const App = () => {
 
   let [calc, setCalc] = useState({
@@ -32,8 +35,8 @@ const App = () => {
           calc.num === 0 && value === "0"
             ? "0"
             : calc.num % 1 === 0
-              ? Number(calc.num + value)
-              : calc.num + value,
+              ? toLocaleString(Number(calc.num + value))
+              : toLocaleString(calc.num + value),
         res: !calc.sign ? 0 : calc.res,
       });
     }
@@ -78,7 +81,7 @@ const App = () => {
         ...calc,
         res: calc.num === "0" && calc.sign === "/"
           ? "Cannot divide with 0"
-          : math(Number(calc.res), Number(calc.num), calc.sign),
+          : toLocaleString(math(Number(calc.res), Number(calc.num), calc.sign)),
         sign: "",
         num: 0,
       })
@@ -88,8 +91,8 @@ const App = () => {
   const invertClickHandler = () => {
     setCalc({
       ...calc,
-      num: calc.num ? calc.num * -1 : 0,
-      res: calc.res ? calc.res * -1 : 0,
+      num: calc.num ? toLocaleString(calc.num * -1) : 0,
+      res: calc.res ? toLocaleString(calc.res * -1) : 0,
       sign: "",
     })
   }
