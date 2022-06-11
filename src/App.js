@@ -113,7 +113,7 @@ const App = () => {
     })
   }
 
-  // The resetClickHandler function defaults all the initial values of calc, returning the calc state as it was when the Calculator app was first rendered
+  // This function defaults all the initial values of calc, returning the calc state as it was when the Calculator app was first rendered.
   const resetClickHandler = () => {
     setCalc({
       ...calc,
